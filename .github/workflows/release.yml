@@ -35,9 +35,13 @@ jobs:
       run: |
         move dist\ZZZ_Copilot.exe .
 
+    - name: Get current commit ID
+      run: |
+        echo %GITHUB_SHA% > version
+
     - name: Create zip file
       run: |
-        powershell Compress-Archive -Path ZZZ_Copilot.exe, assets -DestinationPath ZZZ_Copilot.zip
+        powershell Compress-Archive -Path ZZZ_Copilot.exe, assets, version -DestinationPath ZZZ_Copilot.zip
       
     - name: Create Release
       id: create_release

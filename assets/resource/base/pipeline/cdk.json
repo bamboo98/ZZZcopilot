@@ -1,0 +1,84 @@
+{
+    
+    "兑换码已被使用": {
+        "recognition": "OCR",
+        "roi": [
+            527,
+            427.5,
+            230,
+            41
+        ],
+        "expected": "[兑换码已被使用]{6,}",
+        "timeout": 1000
+    },
+    "兑换成功": {
+        "recognition": "OCR",
+        "roi": [
+            527,
+            427.5,
+            230,
+            41
+        ],
+        "expected": "[兑换成功请稍后前往邮箱领取]{6,}",
+        "timeout": 1000
+    },
+    "兑换码同类型": {
+        "recognition": "OCR",
+        "roi": [
+            527,
+            427.5,
+            230,
+            41
+        ],
+        "expected": "[已使用过同类型兑换码]{6,}",
+        "timeout": 1000
+    },
+    "兑换码无效": {
+        "recognition": "OCR",
+        "roi": [
+            527,
+            427.5,
+            230,
+            41
+        ],
+        "expected": "[无效的兑换码]{4,}",
+        "timeout": 1000
+    },
+    "清除文本": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            777,
+            320,
+            123,
+            122
+        ],
+        "template": "CDK_clear__827_370_23_22__777_320_123_122.png",
+        "action": "Click",
+        "timeout": 1000
+    },
+    "输入文本": {
+        "action": "Custom",
+        "custom_action": "py_input"
+    },
+    "点击确认兑换": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            623,
+            468.5,
+            107,
+            78
+        ],
+        "template": "CDK_confirm__663_503_29_22__613_453_129_122.png",
+        "action": "Click",
+        "timeout": 6000
+    },
+    "选中输入框": {
+        "action": "Click",
+        "target": [
+            585,
+            370,
+            69,
+            21
+        ]
+    }
+}

@@ -5,9 +5,42 @@
             "在大世界",
             "休息了一下1",
             "休息了一下2",
+            "游戏登录",
+            "启动APP",
             "界面检测"
         ],
         "post_delay": 1000
+    },
+    "启动APP": {
+        "recognition": "TemplateMatch",
+        "template": "Desk_APPICON__176_514_45_49__126_464_145_149.png",
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "界面检测"
+        ],
+        "post_delay": 15000
+    },
+    "游戏登录": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1137,
+            606.5,
+            116,
+            87
+        ],
+        "template": "STR_logo__1180_636_35_33__1130_586_135_133.png",
+        "action": "Click",
+        "target": [
+            546,
+            546.5,
+            184,
+            76
+        ],
+        "next": [
+            "界面检测"
+        ],
+        "post_delay": 5000
     },
     "休息了一下1": {
         "recognition": "OCR",
@@ -53,13 +86,13 @@
         "template": "BW_menu__78_41_63_43__28_0_163_134.png",
         "action": "Click",
         "target": [
-            1105,
-            401,
-            43,
-            39
+            1108,
+            306,
+            46,
+            44
         ],
         "next": [
-            "进入档案架",
+            "传送HDD",
             "在地图"
         ],
         "post_delay": 500
@@ -74,7 +107,7 @@
         ],
         "expected": "[街区]",
         "next": [
-            "进入档案架",
+            "传送HDD",
             "在地图"
         ],
         "action": "Swipe",
@@ -91,15 +124,15 @@
             86
         ]
     },
-    "进入档案架": {
+    "传送HDD": {
         "recognition": "TemplateMatch",
         "roi": [
-            118,
-            543,
-            301,
-            162
+            6,
+            577.5,
+            1262,
+            133
         ],
-        "template": "MAP_staff__168_593_201_62__118_543_301_162.png",
+        "template": "MAP_hdd__89_626_96_29__39_576_196_129.png",
         "action": "Click",
         "target": true,
         "next": [
@@ -122,86 +155,32 @@
             132,
             29
         ],
-        "next": "走到HDD",
+        "next": "等待传送完成",
         "post_delay": 3000
     },
-    "走到HDD": {
-        "recognition": "OCR",
-        "roi": [
-            627,
-            110.5,
-            189,
-            75
-        ],
-        "expected": "[影像档案架]{2,}",
-        "action": "Swipe",
-        "begin": [
-            232,
-            579.5,
-            13,
-            34
-        ],
-        "end": [
-            300,
-            688.5,
-            19,
-            23
-        ],
-        "duration": 850,
-        "next": "走到HDD2"
-    },
-    "走到HDD2": {
-        "action": "Swipe",
-        "begin": [
-            244,
-            570.5,
-            34,
-            14
-        ],
-        "end": [
-            462,
-            569.5,
-            34,
-            14
-        ],
-        "duration": 1800,
-        "next": "拖拽视角朝向HDD"
-    },
-    "拖拽视角朝向HDD": {
-        "action": "Swipe",
-        "begin": [
-            640,
-            333.5,
-            34,
-            32
-        ],
-        "end": [
-            789,
-            244.5,
-            38,
-            36
-        ],
-        "duration": 1500,
+    "等待传送完成": {
         "next": [
+            "传送确认",
             "进入HDD系统",
-            "界面检测"
-        ]
+            "等待传送完成"
+        ],
+        "post_delay": 1000
     },
     "进入HDD系统": {
-        "recognition": "OCR",
+        "recognition": "TemplateMatch",
         "roi": [
-            425,
-            8.5,
-            406,
-            277
+            28,
+            0,
+            163,
+            134
         ],
-        "expected": "[空洞深潜系统]{2,}",
+        "template": "BW_menu__78_41_63_43__28_0_163_134.png",
         "action": "Click",
         "target": [
-            999,
-            561.5,
-            62,
-            52
+            984,
+            505.5,
+            59,
+            55
         ],
         "post_delay": 1500,
         "next": [
@@ -347,6 +326,7 @@
             "战斗逻辑",
             "进战等待"
         ],
+        "pre_delay": 0,
         "post_delay": 500
     },
     "战斗逻辑": {
@@ -364,7 +344,19 @@
             "妮可操作",
             "比利操作",
             "其他人操作"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "check_is_eren": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            57,
+            14,
+            168,
+            102
+        ],
+        "template": "BAT_eren__114_48_75_33__64_0_175_131.png"
     },
     "比利操作": {
         "recognition": "TemplateMatch",
@@ -378,7 +370,8 @@
         "action": "Custom",
         "custom_action": "NikoAttack",
         "next": "战斗逻辑",
-        "post_delay": 500
+        "post_delay": 1000,
+        "pre_delay": 0
     },
     "妮可操作": {
         "recognition": "TemplateMatch",
@@ -392,7 +385,8 @@
         "action": "Custom",
         "custom_action": "NikoAttack",
         "next": "战斗逻辑",
-        "post_delay": 500
+        "post_delay": 1000,
+        "pre_delay": 0
     },
     "其他人操作": {
         "action": "Click",
@@ -403,7 +397,8 @@
             43
         ],
         "next": "战斗逻辑",
-        "post_delay": 500
+        "post_delay": 500,
+        "pre_delay": 0
     },
     "战斗结束": {
         "recognition": "OCR",
@@ -439,7 +434,7 @@
             44
         ],
         "next": "对话高坂1",
-        "timeout": 8000,
+        "timeout": 2000,
         "timeout_next": "重开战斗"
     },
     "对话高坂1": {
@@ -450,8 +445,8 @@
             281,
             173
         ],
-        "template": "BAT_chat_bg__547_461_181_73__497_411_281_173.png",
-        "threshold": 0.9,
+        "template": "BAT_chat_bg_new__518_467_243_62__468_417_343_162.png",
+        "threshold": 0.8,
         "green_mask": true,
         "action": "Click",
         "target": [
@@ -461,40 +456,15 @@
             69
         ],
         "next": [
-            "对话高坂3",
-            "对话高坂2"
-        ],
-        "timeout": 8000,
-        "timeout_next": "重开战斗"
-    },
-    "对话高坂2": {
-        "recognition": "TemplateMatch",
-        "roi": [
-            497,
-            411,
-            281,
-            173
-        ],
-        "template": "BAT_chat_bg__547_461_181_73__497_411_281_173.png",
-        "threshold": 0.9,
-        "green_mask": true,
-        "action": "Click",
-        "target": [
-            1043,
-            603.5,
-            57,
-            69
-        ],
-        "next": [
-            "对话高坂3",
-            "对话高坂2"
+            "对话高坂2",
+            "对话高坂1"
         ],
         "timeout": 2000,
         "timeout_next": [
             "战斗结算等待"
         ]
     },
-    "对话高坂3": {
+    "对话高坂2": {
         "recognition": "TemplateMatch",
         "roi": [
             842,
@@ -505,7 +475,7 @@
         "template": "BAT_chat__884_428_23_25__834_378_123_125.png",
         "action": "Click",
         "next": [
-            "对话高坂2"
+            "对话高坂1"
         ]
     },
     "战斗结算等待": {
@@ -525,9 +495,23 @@
         ],
         "expected": "[完成]",
         "action": "Click",
-        "post_delay": 1000,
         "next": [
-            "战斗结算",
+            "丁尼获取计次"
+        ]
+    },
+    "战斗结算完成": {
+        "recognition": "OCR",
+        "roi": [
+            1061,
+            662.5,
+            76,
+            31
+        ],
+        "expected": "[完成]",
+        "action": "Click",
+        "post_delay": 660,
+        "next": [
+            "战斗结算完成",
             "界面检测"
         ],
         "timeout": 30000
@@ -586,9 +570,33 @@
             29
         ],
         "next": [
-            "战斗逻辑"
-        ],
+            "重开计次"
+        ]
+    },
+    "重开计次": {
+        "action": "Custom",
+        "custom_action": "DataStatistic",
+        "custom_action_param": {
+            "key": "battle_restart",
+            "value": 1
+        },
         "post_delay": 8000,
-        "timeout": 60000
+        "timeout": 60000,
+        "next": [
+            "战斗逻辑"
+        ]
+    },
+    "丁尼获取计次": {
+        "action": "Custom",
+        "custom_action": "DataStatistic",
+        "custom_action_param": {
+            "key": "gold_get",
+            "value": 80
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "战斗结算完成"
+        ]
     }
 }
