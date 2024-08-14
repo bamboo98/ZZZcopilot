@@ -37,7 +37,8 @@ jobs:
 
     - name: Get current commit ID
       run: |
-        echo %GITHUB_SHA% > version
+        echo $env:GITHUB_SHA > version
+      shell: pwsh
 
     - name: Create zip file
       run: |
