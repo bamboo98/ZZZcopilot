@@ -8,3 +8,5 @@ assets/config/maa_pi_config.json
 *.spec
 build/*
 dist/
+cdk.txt
+cdkused.txt
