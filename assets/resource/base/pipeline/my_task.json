@@ -7,6 +7,7 @@
             "休息了一下2",
             "游戏登录",
             "启动APP",
+            "月卡",
             "界面检测"
         ],
         "post_delay": 1000
@@ -75,6 +76,21 @@
         ],
         "post_delay": 1000
     },
+    "月卡": {
+        "recognition": "OCR",
+        "roi": [
+            464,
+            256,
+            342,
+            216
+        ],
+        "expected": "[今日到账月卡剩余天]{3,}",
+        "action": "Click",
+        "next": [
+            "界面检测"
+        ],
+        "post_delay": 1000
+    },
     "在大世界": {
         "recognition": "TemplateMatch",
         "roi": [
@@ -122,7 +138,8 @@
             242.5,
             30,
             86
-        ]
+        ],
+        "timeout_next": "界面检测"
     },
     "传送HDD": {
         "recognition": "TemplateMatch",
