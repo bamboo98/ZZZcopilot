@@ -528,6 +528,7 @@
         "action": "Click",
         "post_delay": 660,
         "next": [
+            "无奖励",
             "战斗结算完成",
             "界面检测"
         ],
@@ -589,6 +590,16 @@
         "next": [
             "重开计次"
         ]
+    },
+    "无奖励": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            833,
+            311,
+            433,
+            313
+        ],
+        "template": "BAT_end_no_reward__883_361_333_213__833_311_433_313.png"
     },
     "重开计次": {
         "action": "Custom",
