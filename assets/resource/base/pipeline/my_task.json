@@ -8,9 +8,22 @@
             "游戏登录",
             "启动APP",
             "月卡",
+            "重新登录",
             "界面检测"
         ],
         "post_delay": 1000
+    },
+    "重新登录": {
+        "recognition": "OCR",
+        "roi": [
+            471,
+            412,
+            117,
+            39
+        ],
+        "expected": "[重新登录]{3,}",
+        "action": "Click",
+        "next": "界面检测"
     },
     "启动APP": {
         "recognition": "TemplateMatch",
@@ -498,6 +511,7 @@
     "战斗结算等待": {
         "next": [
             "战斗结算",
+            "重新登录",
             "战斗结算等待"
         ],
         "post_delay": 1000
